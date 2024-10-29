@@ -25,6 +25,14 @@ describe('testing For Transaction controller', () => {
             expect(response.body.status).toBe(true);
             expect(response.body.message).toEqual('Berhasil menampilkan detail transaksi');
         });
+
+        test("should return 404 if transaction not found", async () => {
+            // const wrongtransactionId = parseInt(100);
+            const response = await request(app).get('/api/v1/transactions/100');
+            expect(response.statusCode).toBe(404);
+            expect(response.body).toHaveProperty('message');
+            expect(response.body.message).toEqual('Transaction not found');
+        });
     });
 
     describe('POST /api/v1/transactions', () => {

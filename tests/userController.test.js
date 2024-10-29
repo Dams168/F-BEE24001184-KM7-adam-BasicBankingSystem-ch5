@@ -35,6 +35,13 @@ describe('testing For User controller', () => {
             expect(response.body.status).toBe(true);
             expect(response.body.message).toEqual('Berhasil Menampilkan Data User');
         });
+
+        test("should return 404 if user not found", async () => {
+            const response = await request(app).get('/api/v1/users/100');
+            expect(response.statusCode).toBe(404);
+            expect(response.body).toHaveProperty('message');
+            expect(response.body.message).toEqual('User not found');
+        });
     });
 
     describe('POST /api/v1/users', () => {

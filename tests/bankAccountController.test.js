@@ -26,6 +26,13 @@ describe('testing For Bank Account controller', () => {
             expect(response.body.status).toBe(true);
             expect(response.body.message).toEqual('Berhasil menampilkan detail akun');
         });
+
+        test("should return 404 if account not found", async () => {
+            const response = await request(app).get('/api/v1/accounts/100');
+            expect(response.statusCode).toBe(404);
+            expect(response.body).toHaveProperty('message');
+            expect(response.body.message).toEqual('Account not found');
+        });
     });
 
     describe('POST /api/v1/accounts', () => {

@@ -24,8 +24,8 @@ app.use('/auth', authRoutes);
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerJSON));
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+// });
 
 module.exports = app;

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30.37% </span>
+                <span class="strong">65.82% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>24/79</span>
+                <span class='fraction'>52/79</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30.37% </span>
+                <span class="strong">65.82% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>24/79</span>
+                <span class='fraction'>52/79</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -185,38 +185,38 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">const { PrismaClient } = require('@prisma/client');
@@ -262,39 +262,39 @@ class bankAccountController {
         GET /api/v1/accounts: menampilkan
         daftar akun. */
 &nbsp;
-<span class="fstat-no" title="function not covered" >    static async getAccounts(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >        const accounts = await prisma.bank_accounts.findMany({</span>
-<span class="cstat-no" title="statement not covered" >            orderBy: {</span>
-<span class="cstat-no" title="statement not covered" >                id: 'asc',</span>
-<span class="cstat-no" title="statement not covered" >            },</span>
-<span class="cstat-no" title="statement not covered" >        });</span>
-<span class="cstat-no" title="statement not covered" >        res.status(200).json({</span>
-<span class="cstat-no" title="statement not covered" >            status: true,</span>
-<span class="cstat-no" title="statement not covered" >            message: 'Berhasil menampilkan data akun',</span>
-<span class="cstat-no" title="statement not covered" >            data: accounts</span>
-<span class="cstat-no" title="statement not covered" >        });</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
+    static async getAccounts(req, res) {
+        const accounts = await prisma.bank_accounts.findMany({
+            orderBy: {
+                id: 'asc',
+            },
+        });
+        res.status(200).json({
+            status: true,
+            message: 'Berhasil menampilkan data akun',
+            data: accounts
+        });
+    }
 &nbsp;
     /* GET /api/v1/accounts: menampilkan
     detail akun. */
-<span class="fstat-no" title="function not covered" >    static async getAccountById(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >        const { accountId } = req.params;</span>
-<span class="cstat-no" title="statement not covered" >        const account = await prisma.bank_accounts.findUnique({</span>
-<span class="cstat-no" title="statement not covered" >            where: {</span>
-<span class="cstat-no" title="statement not covered" >                id: Number(accountId),</span>
-<span class="cstat-no" title="statement not covered" >            },</span>
-<span class="cstat-no" title="statement not covered" >        });</span>
-<span class="cstat-no" title="statement not covered" >        if (!account) {</span>
-<span class="cstat-no" title="statement not covered" >            return res.status(404).json({</span>
-<span class="cstat-no" title="statement not covered" >                message: 'Account not found',</span>
-<span class="cstat-no" title="statement not covered" >            });</span>
-<span class="cstat-no" title="statement not covered" >        }</span>
-<span class="cstat-no" title="statement not covered" >        res.status(200).json({</span>
-<span class="cstat-no" title="statement not covered" >            status: true,</span>
-<span class="cstat-no" title="statement not covered" >            message: 'Berhasil menampilkan detail akun',</span>
-<span class="cstat-no" title="statement not covered" >            data: account</span>
-<span class="cstat-no" title="statement not covered" >        });</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
+    static async getAccountById(req, res) {
+        const { accountId } = req.params;
+        const account = await prisma.bank_accounts.findUnique({
+            where: {
+                id: Number(accountId),
+            },
+        });
+        if (!account) {
+            return res.status(404).json({
+                message: 'Account not found',
+            });
+        }
+        res.status(200).json({
+            status: true,
+            message: 'Berhasil menampilkan detail akun',
+            data: account
+        });
+    }
 }
 &nbsp;
 module.exports = bankAccountController;</pre></td></tr></table></pre>
@@ -304,7 +304,7 @@ module.exports = bankAccountController;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-29T09:30:45.252Z
+                at 2024-10-29T12:33:56.369Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

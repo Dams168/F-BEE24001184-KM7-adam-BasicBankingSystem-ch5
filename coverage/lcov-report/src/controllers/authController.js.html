@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/controllers/userController.js</title>
+    <title>Code coverage report for src/controllers/authController.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/controllers</a> userController.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/controllers</a> authController.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">24.5% </span>
+                <span class="strong">14.6% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>25/102</span>
+                <span class='fraction'>13/89</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">24.5% </span>
+                <span class="strong">14.6% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>25/102</span>
+                <span class='fraction'>13/89</span>
             </div>
         
             
@@ -151,20 +151,7 @@
 <a name='L86'></a><a href='#L86'>86</a>
 <a name='L87'></a><a href='#L87'>87</a>
 <a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a>
-<a name='L102'></a><a href='#L102'>102</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L89'></a><a href='#L89'>89</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -208,13 +195,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -236,12 +216,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -265,108 +239,95 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">const { PrismaClient } = require('@prisma/client');
-const bcrypt = require('bcrypt');
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">const bcrypt = require('bcrypt');
+const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
+const jwt = require('jsonwebtoken');
+const JWT_SECRET = process.env.JWT_SECRET;
+const BCRYPT_SALT = parseInt(process.env.BCRYPT_SALT);
 &nbsp;
-&nbsp;
-class userController {
-    /* POST /api/v1/users: menambahkan user
-    baru beserta dengan profilnya. */
-<span class="fstat-no" title="function not covered" >    static async createUser(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >        const { name, email, password, identity_type, identity_number, address } = req.body;</span>
-<span class="cstat-no" title="statement not covered" >        const hashedPassword = await bcrypt.hash(password, 10);</span>
-<span class="cstat-no" title="statement not covered" ></span>
+class AuthController {
+<span class="fstat-no" title="function not covered" >    static async register(req, res) {</span>
 <span class="cstat-no" title="statement not covered" >        try {</span>
-<span class="cstat-no" title="statement not covered" >            const newUser = await prisma.users.create({</span>
-<span class="cstat-no" title="statement not covered" >                data: {</span>
-<span class="cstat-no" title="statement not covered" >                    email,</span>
-<span class="cstat-no" title="statement not covered" >                    name,</span>
-<span class="cstat-no" title="statement not covered" >                    password: hashedPassword,</span>
-<span class="cstat-no" title="statement not covered" >                    profile: {</span>
-<span class="cstat-no" title="statement not covered" >                        create: {</span>
-<span class="cstat-no" title="statement not covered" >                            identity_type,</span>
-<span class="cstat-no" title="statement not covered" >                            identity_number,</span>
-<span class="cstat-no" title="statement not covered" >                            address</span>
-<span class="cstat-no" title="statement not covered" >                        }</span>
-<span class="cstat-no" title="statement not covered" >                    }</span>
-<span class="cstat-no" title="statement not covered" >                },</span>
-<span class="cstat-no" title="statement not covered" >                include: {</span>
-<span class="cstat-no" title="statement not covered" >                    profile: true</span>
+<span class="cstat-no" title="statement not covered" >            const { name, email, password } = req.body;</span>
+<span class="cstat-no" title="statement not covered" >            console.log(req.body);</span>
+<span class="cstat-no" title="statement not covered" >            const uniqueEmail = await prisma.users.findUnique({</span>
+<span class="cstat-no" title="statement not covered" >                where: {</span>
+<span class="cstat-no" title="statement not covered" >                    email: email</span>
 <span class="cstat-no" title="statement not covered" >                }</span>
 <span class="cstat-no" title="statement not covered" >            });</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >            res.status(201).json({</span>
-<span class="cstat-no" title="statement not covered" >                status: true,</span>
-<span class="cstat-no" title="statement not covered" >                message: 'User created successfully',</span>
-<span class="cstat-no" title="statement not covered" >                user: newUser</span>
-<span class="cstat-no" title="statement not covered" >            });</span>
+<span class="cstat-no" title="statement not covered" >            if (uniqueEmail) {</span>
+<span class="cstat-no" title="statement not covered" >                res.status(400).json({</span>
+<span class="cstat-no" title="statement not covered" >                    error: 'Email sudah terdaftar',</span>
+<span class="cstat-no" title="statement not covered" >                    status: 400,</span>
+<span class="cstat-no" title="statement not covered" >                    message: 'Bad Request'</span>
+<span class="cstat-no" title="statement not covered" >                });</span>
+<span class="cstat-no" title="statement not covered" >            } else {</span>
+<span class="cstat-no" title="statement not covered" >                const hashedPassword = await bcrypt.hashSync(password, BCRYPT_SALT);</span>
+<span class="cstat-no" title="statement not covered" >                let createUser = await prisma.users.create({</span>
+<span class="cstat-no" title="statement not covered" >                    data: {</span>
+<span class="cstat-no" title="statement not covered" >                        name,</span>
+<span class="cstat-no" title="statement not covered" >                        email,</span>
+<span class="cstat-no" title="statement not covered" >                        password: hashedPassword</span>
+<span class="cstat-no" title="statement not covered" >                    }</span>
+<span class="cstat-no" title="statement not covered" >                })</span>
+<span class="cstat-no" title="statement not covered" >                res.status(201).json({</span>
+<span class="cstat-no" title="statement not covered" >                    error: null,</span>
+<span class="cstat-no" title="statement not covered" >                    message: 'User berhasil dibuat',</span>
+<span class="cstat-no" title="statement not covered" >                    status: 201,</span>
+<span class="cstat-no" title="statement not covered" >                    data: createUser</span>
+<span class="cstat-no" title="statement not covered" >                });</span>
+<span class="cstat-no" title="statement not covered" >            }</span>
 <span class="cstat-no" title="statement not covered" >        } catch (error) {</span>
-<span class="cstat-no" title="statement not covered" >            console.error(error);</span>
-<span class="cstat-no" title="statement not covered" >            res.status(500).json({</span>
-<span class="cstat-no" title="statement not covered" >                status: false,</span>
-<span class="cstat-no" title="statement not covered" >                message: 'Failed to create user',</span>
-<span class="cstat-no" title="statement not covered" >                error: error.message</span>
-<span class="cstat-no" title="statement not covered" >            });</span>
+<span class="cstat-no" title="statement not covered" >            console.error("Error during user registration:", error);</span>
+<span class="cstat-no" title="statement not covered" >            res.status(500).json(error);</span>
 <span class="cstat-no" title="statement not covered" >        }</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
-&nbsp;
-&nbsp;
-    /* 
-    GET /api/v1/users: menampilkan daftar
-    users. 
-    */
-<span class="fstat-no" title="function not covered" >    static async getUsers(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >        const users = await prisma.users.findMany({</span>
-<span class="cstat-no" title="statement not covered" >            orderBy: {</span>
-<span class="cstat-no" title="statement not covered" >                id: 'asc',</span>
-<span class="cstat-no" title="statement not covered" >            },</span>
-<span class="cstat-no" title="statement not covered" >            include: {</span>
-<span class="cstat-no" title="statement not covered" >                profile: true,</span>
-<span class="cstat-no" title="statement not covered" >            },</span>
-<span class="cstat-no" title="statement not covered" >        });</span>
-<span class="cstat-no" title="statement not covered" >        if (!users) {</span>
-<span class="cstat-no" title="statement not covered" >            res.status(404).json({</span>
-<span class="cstat-no" title="statement not covered" >                status: 404,</span>
-<span class="cstat-no" title="statement not covered" >                message: 'User not found',</span>
+<span class="fstat-no" title="function not covered" >    static async login(req, res) {</span>
+<span class="cstat-no" title="statement not covered" >        try {</span>
+<span class="cstat-no" title="statement not covered" >            let { email, password } = req.body;</span>
+<span class="cstat-no" title="statement not covered" >            let user = await prisma.users.findUnique({</span>
+<span class="cstat-no" title="statement not covered" >                where: {</span>
+<span class="cstat-no" title="statement not covered" >                    email: email</span>
+<span class="cstat-no" title="statement not covered" >                }</span>
 <span class="cstat-no" title="statement not covered" >            });</span>
+<span class="cstat-no" title="statement not covered" >            if (!user) {</span>
+<span class="cstat-no" title="statement not covered" >                res.status(404).json({</span>
+<span class="cstat-no" title="statement not covered" >                    error: 'Email atau password salah',</span>
+<span class="cstat-no" title="statement not covered" >                    status: 400,</span>
+<span class="cstat-no" title="statement not covered" >                    message: 'Not Found'</span>
+<span class="cstat-no" title="statement not covered" >                });</span>
+<span class="cstat-no" title="statement not covered" >            } else {</span>
+<span class="cstat-no" title="statement not covered" >                let isPassword = await bcrypt.compareSync(password, user.password);</span>
+<span class="cstat-no" title="statement not covered" >                if (!isPassword) {</span>
+<span class="cstat-no" title="statement not covered" >                    res.status(400).json({</span>
+<span class="cstat-no" title="statement not covered" >                        error: 'Email atau password salah',</span>
+<span class="cstat-no" title="statement not covered" >                        status: 400,</span>
+<span class="cstat-no" title="statement not covered" >                        message: 'Bad Request'</span>
+<span class="cstat-no" title="statement not covered" >                    });</span>
+<span class="cstat-no" title="statement not covered" >                } else {</span>
+<span class="cstat-no" title="statement not covered" >                    const accessToken = jwt.sign({</span>
+<span class="cstat-no" title="statement not covered" >                        name: user.name,</span>
+<span class="cstat-no" title="statement not covered" >                        id: user.id,</span>
+<span class="cstat-no" title="statement not covered" >                    }, JWT_SECRET, {</span>
+<span class="cstat-no" title="statement not covered" >                        expiresIn: '3h'</span>
+<span class="cstat-no" title="statement not covered" >                    });</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >                    res.status(200).json({</span>
+<span class="cstat-no" title="statement not covered" >                        error: null,</span>
+<span class="cstat-no" title="statement not covered" >                        message: 'Login berhasil',</span>
+<span class="cstat-no" title="statement not covered" >                        status: 200,</span>
+<span class="cstat-no" title="statement not covered" >                        accessToken</span>
+<span class="cstat-no" title="statement not covered" >                    });</span>
+<span class="cstat-no" title="statement not covered" >                }</span>
+<span class="cstat-no" title="statement not covered" >            }</span>
+<span class="cstat-no" title="statement not covered" >        } catch (error) {</span>
+<span class="cstat-no" title="statement not covered" >            res.status(500).json(error);</span>
 <span class="cstat-no" title="statement not covered" >        }</span>
-<span class="cstat-no" title="statement not covered" >        res.status(200).json({</span>
-<span class="cstat-no" title="statement not covered" >            status: true,</span>
-<span class="cstat-no" title="statement not covered" >            message: 'Berhasil Menampilkan Data User',</span>
-<span class="cstat-no" title="statement not covered" >            data: users,</span>
-<span class="cstat-no" title="statement not covered" >        });</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
-&nbsp;
-    /* GET /api/v1/users/:userId: menampilkan
-    detail informasi user (tampilkan juga
-    profilnya). */
-&nbsp;
-<span class="fstat-no" title="function not covered" >    static async getUserById(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >        const { userId } = req.params;</span>
-<span class="cstat-no" title="statement not covered" >        const user = await prisma.users.findUnique({</span>
-<span class="cstat-no" title="statement not covered" >            where: {</span>
-<span class="cstat-no" title="statement not covered" >                id: Number(userId),</span>
-<span class="cstat-no" title="statement not covered" >            },</span>
-<span class="cstat-no" title="statement not covered" >            include: {</span>
-<span class="cstat-no" title="statement not covered" >                profile: true,</span>
-<span class="cstat-no" title="statement not covered" >            },</span>
-<span class="cstat-no" title="statement not covered" >        });</span>
-<span class="cstat-no" title="statement not covered" >        if (!user) {</span>
-<span class="cstat-no" title="statement not covered" >            return res.status(404).json({</span>
-<span class="cstat-no" title="statement not covered" >                status: 404,</span>
-<span class="cstat-no" title="statement not covered" >                message: 'User not found',</span>
-<span class="cstat-no" title="statement not covered" >            });</span>
-<span class="cstat-no" title="statement not covered" >        }</span>
-<span class="cstat-no" title="statement not covered" >        res.status(200).json({</span>
-<span class="cstat-no" title="statement not covered" >            status: true,</span>
-<span class="cstat-no" title="statement not covered" >            message: 'Berhasil Menampilkan Data User',</span>
-<span class="cstat-no" title="statement not covered" >            data: user,</span>
-<span class="cstat-no" title="statement not covered" >        });</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
 }
 &nbsp;
-module.exports = userController;</pre></td></tr></table></pre>
+module.exports = AuthController;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
