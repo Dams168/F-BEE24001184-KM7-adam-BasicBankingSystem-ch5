@@ -76,7 +76,7 @@ class AuthController {
                         error: null,
                         message: 'Login berhasil',
                         status: 200,
-                        accessToken
+                        token: accessToken
                     });
                 }
             }

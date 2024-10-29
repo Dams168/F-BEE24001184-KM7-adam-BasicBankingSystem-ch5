@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSON = require('./docs/swagger.json');
+const cors = require('cors');
 
 
 const app = express();
@@ -13,7 +14,7 @@ const bankAccountRoutes = require('./routes/bankAccountRoutes');
 const transactionRoutes = require('./routes/transactionRoutes');
 const authRoutes = require('./routes/authRoutes');
 
-
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -24,8 +25,8 @@ app.use('/auth', authRoutes);
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerJSON));
 
-// app.listen(PORT, () => {
-//     console.log(`Server is running on port ${PORT}`);
-// });
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
 
 module.exports = app;

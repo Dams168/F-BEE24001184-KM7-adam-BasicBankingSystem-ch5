@@ -19,7 +19,12 @@
   },
   "servers": [
     {
-      "url": "https://localhost:3000"
+      "url": "http://localhost:3000"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
     }
   ],
   "tags": [
@@ -319,9 +324,15 @@
           "content": {
             "application/json": {
               "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  }
+                },
                 "example": {
-                  "email": "adam@mail.com",
-                  "password": "password"
+                  "email": "aswd@mail.com",
+                  "password": "aswd"
                 }
               }
             }
@@ -336,22 +347,27 @@
                 "example": {
                   "email": "adam@mail.com",
                   "password": "password",
-                  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkYW0iLCJlbWFpbCI6ImFkYW1AbWFpbC5jb20iLCJpYXQiOjE2MzQwNzYwNzF9.1"
+                  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkYW0iLCJlbWFpbCI6ImFkYW1AbWFpbC5jb20iLCJpYXQiOjE2NzYwNjYwNzJ9.1"
                 }
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/auth/authenticate": {
       "get": {
-        "tags": ["authentication"],
         "security": [
           {
             "bearerAuth": []
           }
         ],
+        "tags": ["authentication"],
         "summary": "Check authenticate",
         "operationId": "authenticate",
         "responses": {
@@ -370,6 +386,13 @@
     }
   },
   "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
     "schemas": {
       "Users": {
         "type": "object",
