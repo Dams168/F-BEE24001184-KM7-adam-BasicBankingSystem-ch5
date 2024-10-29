@@ -30,6 +30,7 @@ class bankAccountController {
             },
         });
         res.status(201).json({
+            status: true,
             message: 'Akun berhasil dibuat',
             account: newAccount,
         });
@@ -47,8 +48,9 @@ class bankAccountController {
             },
         });
         res.status(200).json({
+            status: true,
             message: 'Berhasil menampilkan data akun',
-            accounts
+            data: accounts
         });
     }
 
@@ -67,8 +69,9 @@ class bankAccountController {
             });
         }
         res.status(200).json({
+            status: true,
             message: 'Berhasil menampilkan detail akun',
-            account
+            data: account
         });
     }
 }

@@ -4,35 +4,44 @@ const prisma = new PrismaClient();
 
 
 class userController {
-
-
     /* POST /api/v1/users: menambahkan user
     baru beserta dengan profilnya. */
     static async createUser(req, res) {
         const { name, email, password, identity_type, identity_number, address } = req.body;
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = await prisma.users.create({
-            data: {
-                email,
-                name,
-                password: hashedPassword,
-                profile: {
-                    create: {
-                        identity_type,
-                        identity_number,
-                        address
+
+        try {
+            const newUser = await prisma.users.create({
+                data: {
+                    email,
+                    name,
+                    password: hashedPassword,
+                    profile: {
+                        create: {
+                            identity_type,
+                            identity_number,
+                            address
+                        }
                     }
+                },
+                include: {
+                    profile: true
                 }
-            },
-            include: {
-                profile: true
-            }
-        });
-        res.status(201).json({
-            status: 200,
-            message: 'User created successfully',
-            user: newUser
-        });
+            });
+
+            res.status(201).json({
+                status: true,
+                message: 'User created successfully',
+                user: newUser
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({
+                status: false,
+                message: 'Failed to create user',
+                error: error.message
+            });
+        }
     }
 
 
@@ -49,7 +58,14 @@ class userController {
                 profile: true,
             },
         });
+        if (!users) {
+            res.status(404).json({
+                status: 404,
+                message: 'User not found',
+            });
+        }
         res.status(200).json({
+            status: true,
             message: 'Berhasil Menampilkan Data User',
             data: users,
         });
@@ -76,7 +92,7 @@ class userController {
             });
         }
         res.status(200).json({
-            status: 200,
+            status: true,
             message: 'Berhasil Menampilkan Data User',
             data: user,
         });

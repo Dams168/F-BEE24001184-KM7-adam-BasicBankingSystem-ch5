@@ -18,7 +18,8 @@ app.use('/api/v1', transactionRoutes);
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerJSON));
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+// });
 
+module.exports = app;

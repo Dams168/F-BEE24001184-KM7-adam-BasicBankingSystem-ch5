@@ -59,6 +59,7 @@ class transactionController {
             },
         });
         res.status(201).json({
+            status: true,
             message: 'Transaksi berhasil',
             data: {
                 source_account_id: sourceAccount.id,
@@ -78,8 +79,9 @@ class transactionController {
             },
         });
         res.status(200).json({
+            status: true,
             message: 'Berhasil menampilkan data transaksi',
-            transactions
+            data: transactions
         });
     }
 
@@ -100,8 +102,9 @@ class transactionController {
             });
         }
         res.status(200).json({
+            status: true,
             message: 'Berhasil menampilkan detail transaksi',
-            transaction
+            data: transaction
         });
     }
 
