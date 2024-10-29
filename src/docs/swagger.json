@@ -19,7 +19,7 @@
   },
   "servers": [
     {
-      "url": "https://localhost:3000/api/v1"
+      "url": "https://localhost:3000"
     }
   ],
   "tags": [
@@ -34,10 +34,14 @@
     {
       "name": "transactions",
       "description": "Operations about transactions"
+    },
+    {
+      "name": "authentication",
+      "description": "Operations about authentication"
     }
   ],
   "paths": {
-    "/users": {
+    "/api/v1/users": {
       "get": {
         "tags": ["Users"],
         "summary": "Get all users",
@@ -86,7 +90,7 @@
         }
       }
     },
-    "/users/{user_id}": {
+    "/api/v1/users/{user_id}": {
       "get": {
         "tags": ["Users"],
         "summary": "Get user by id",
@@ -117,7 +121,7 @@
         }
       }
     },
-    "/accounts": {
+    "/api/v1/accounts": {
       "get": {
         "tags": ["accounts"],
         "summary": "Get all accounts",
@@ -166,7 +170,7 @@
         }
       }
     },
-    "/accounts/{account_id}": {
+    "/api/v1/accounts/{account_id}": {
       "get": {
         "tags": ["accounts"],
         "summary": "Get account by id",
@@ -197,7 +201,7 @@
         }
       }
     },
-    "/transactions": {
+    "/api/v1/transactions": {
       "get": {
         "tags": ["transactions"],
         "summary": "Get all transactions",
@@ -246,7 +250,7 @@
         }
       }
     },
-    "/transactions/{transaction_id}": {
+    "/api/v1/transactions/{transaction_id}": {
       "get": {
         "tags": ["transactions"],
         "summary": "Get transaction by id",
@@ -270,6 +274,93 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/transactions"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": ["authentication"],
+        "summary": "register user",
+        "operationId": "register",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Users"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Login Berhasil",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Users"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": ["authentication"],
+        "summary": "login user",
+        "operationId": "login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "example": {
+                  "email": "adam@mail.com",
+                  "password": "password"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Login Berhasil",
+            "content": {
+              "application/json": {
+                "example": {
+                  "email": "adam@mail.com",
+                  "password": "password",
+                  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkYW0iLCJlbWFpbCI6ImFkYW1AbWFpbC5jb20iLCJpYXQiOjE2MzQwNzYwNzF9.1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/authenticate": {
+      "get": {
+        "tags": ["authentication"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Check authenticate",
+        "operationId": "authenticate",
+        "responses": {
+          "200": {
+            "description": "Berhasil terautentikasi",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Berhasil terautentikasi"
                 }
               }
             }
