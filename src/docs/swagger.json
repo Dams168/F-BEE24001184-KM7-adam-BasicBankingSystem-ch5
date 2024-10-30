@@ -102,7 +102,7 @@
         "operationId": "getUserById",
         "parameters": [
           {
-            "name": "id",
+            "name": "user_id",
             "in": "path",
             "description": "ID of user to return",
             "required": true,
@@ -182,7 +182,7 @@
         "operationId": "getAccountById",
         "parameters": [
           {
-            "name": "id",
+            "name": "account_id",
             "in": "path",
             "description": "ID of account to return",
             "required": true,
@@ -262,7 +262,7 @@
         "operationId": "getTransactionById",
         "parameters": [
           {
-            "name": "id",
+            "name": "transaction_id",
             "in": "path",
             "description": "ID of transaction to return",
             "required": true,
@@ -286,7 +286,7 @@
         }
       }
     },
-    "/auth/register": {
+    "/api/v1/auth/register": {
       "post": {
         "tags": ["authentication"],
         "summary": "register user",
@@ -315,7 +315,7 @@
         }
       }
     },
-    "/auth/login": {
+    "/api/v1/auth/login": {
       "post": {
         "tags": ["authentication"],
         "summary": "login user",
@@ -331,8 +331,8 @@
                   }
                 },
                 "example": {
-                  "email": "aswd@mail.com",
-                  "password": "aswd"
+                  "email": "adam@mail.com",
+                  "password": "password"
                 }
               }
             }
@@ -360,7 +360,7 @@
         ]
       }
     },
-    "/auth/authenticate": {
+    "/api/v1/auth/authenticate": {
       "get": {
         "security": [
           {
@@ -405,9 +405,10 @@
           "name": {
             "type": "string",
             "format": "string",
-            "example": "Adam"
+            "example": "adam"
           },
           "email": {
+            "uniqueItems": true,
             "type": "string",
             "format": "string",
             "example": "adam@mail.com"
@@ -431,6 +432,7 @@
             "example": 10
           },
           "user_id": {
+            "uniqueItems": true,
             "type": "integer",
             "format": "int64",
             "example": 1
@@ -441,6 +443,7 @@
             "example": "KTP"
           },
           "identity_number": {
+            "uniqueItems": true,
             "type": "string",
             "format": "string",
             "example": "1234567890"
@@ -464,6 +467,7 @@
             "example": 1
           },
           "user_id": {
+            "uniqueItems": true,
             "type": "integer",
             "format": "int64",
             "example": 1
@@ -474,6 +478,7 @@
             "example": "ABC"
           },
           "bank_account_number": {
+            "uniqueItems": true,
             "type": "string",
             "format": "string",
             "example": "9876543210"
