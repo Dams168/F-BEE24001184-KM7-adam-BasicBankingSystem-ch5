@@ -3,27 +3,16 @@ const app = require('../src/app');
 
 describe('testing For User controller', () => {
     describe('GET /api/v1/users', () => {
-        test("should get all user - 200", () => {
-            return request(app).get('/api/v1/users')
+        test("should get all user - 200", async () => {
+            return await request(app).get('/api/v1/users')
                 .then((res) => {
                     expect(res.statusCode).toBe(200)
                     expect(res.body).toHaveProperty('message')
                     expect(res.body).toHaveProperty('data')
                     expect(res.body.status).toBe(true)
                     expect(res.body.message).toEqual('Berhasil Menampilkan Data User')
-                    // done()
                 })
         })
-
-        // test("should get all user - 404", () => {
-        //     return request(app).get('/api/v1/users')
-        //         .then((res) => {
-        //             expect(res.statusCode).toBe(404)
-        //             expect(res.body).toHaveProperty('message')
-        //             expect(res.body.message).toEqual('User not found')
-        //         })
-        // })
-
     });
 
 
@@ -34,7 +23,7 @@ describe('testing For User controller', () => {
                 name: 'test',
                 password: 'test',
                 identity_type: 'KTP',
-                identity_number: '123456',
+                identity_number: '1234561',
                 address: 'test'
             });
 

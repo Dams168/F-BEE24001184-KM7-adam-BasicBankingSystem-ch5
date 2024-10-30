@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/v1', userRoutes);
 app.use('/api/v1', bankAccountRoutes);
 app.use('/api/v1', transactionRoutes);
-app.use('/auth', authRoutes);
+app.use('/api/v1/auth', authRoutes);
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerJSON));
 

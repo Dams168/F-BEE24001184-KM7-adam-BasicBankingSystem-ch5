@@ -19,7 +19,7 @@ describe('testing For Bank Account controller', () => {
     describe('POST /api/v1/accounts', () => {
         test("should create new account", async () => {
             const createAccount = await request(app).post('/api/v1/accounts').send({
-                user_id: 1,
+                user_id: 2,
                 bank_name: 'BANK 1',
                 bank_account_number: '789456',
                 balance: 1000000
@@ -60,7 +60,7 @@ describe('testing For Bank Account controller', () => {
 
     describe('GET /api/v1/accounts/:accountId', () => {
         test("should get account by id", async () => {
-            const response = await request(app).get('/api/v1/accounts/3');
+            const response = await request(app).get('/api/v1/accounts/1');
             expect(response.statusCode).toBe(200);
             expect(response.body).toHaveProperty('message');
             expect(response.body).toHaveProperty('data');

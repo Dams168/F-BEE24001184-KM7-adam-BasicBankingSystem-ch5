@@ -20,8 +20,8 @@ describe('testing For Transaction controller', () => {
     describe('POST /api/v1/transactions', () => {
         test("should create new transaction", async () => {
             const createTransaction = await request(app).post('/api/v1/transactions').send({
-                source_account_id: 3,
-                destination_account_id: 4,
+                source_account_id: 1,
+                destination_account_id: 2,
                 amount: 1000
             });
 
@@ -35,7 +35,7 @@ describe('testing For Transaction controller', () => {
         test("should return 400 if source account not found", async () => {
             const createTransaction = await request(app).post('/api/v1/transactions').send({
                 source_account_id: 100,
-                destination_account_id: 4,
+                destination_account_id: 2,
                 amount: 1000
             });
             expect(createTransaction.statusCode).toBe(404);
@@ -45,7 +45,7 @@ describe('testing For Transaction controller', () => {
 
         test("should return 400 if destination account not found", async () => {
             const createTransaction = await request(app).post('/api/v1/transactions').send({
-                source_account_id: 3,
+                source_account_id: 1,
                 destination_account_id: 100,
                 amount: 1000
             });
@@ -56,8 +56,8 @@ describe('testing For Transaction controller', () => {
 
         test("should return 400 if balance not enough", async () => {
             const createTransaction = await request(app).post('/api/v1/transactions').send({
-                source_account_id: 3,
-                destination_account_id: 4,
+                source_account_id: 1,
+                destination_account_id: 2,
                 amount: 100000000
             });
             expect(createTransaction.statusCode).toBe(400);
