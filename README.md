@@ -9,6 +9,8 @@ Challenge 5 - Membuat REST API Basic Banking System - MSIB (Binar Academy) - BAC
 - Prisma ORM
 - PostgreSQL (Database)
 - Bcrypt (Hashing Password)
+- Jest, Supertest (TDD)
+- JWT-Strategy (Authentication)
 
 ## Database
 
